@@ -2,7 +2,7 @@
 
 # RecycloAI - Smart Waste Classification & Bin Locator 🚮♻️🗺️
 
-## Overview
+## Overview of the project
 
 **RecycloAI** is a mobile web application that uses AI to classify waste materials and helps users find the nearest appropriate disposal bins. The app combines computer vision for waste classification with location services and mapping to guide users to the correct recycling or waste bins in their area.
 
