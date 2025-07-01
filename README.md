@@ -1,34 +1,11 @@
 # recycloAI_mobile
 
-# RecycloAI - Waste Classification App 🚮♻️
 
-## Overview
-RecycloAI is a mobile application that uses computer vision to classify waste materials and provide recycling guidance. Built with React Native (Expo), Supabase, and TensorFlow Lite for on-device machine learning.
-
-## Features
-- 📸 Scan waste items using your phone's camera
-- 🤖 AI-powered waste classification
-- 📊 Track your recycling history
-- 🌱 Learn proper disposal methods
-- 🔐 User authentication
-
-
-## The Team
-
-| Name            | Registration Number | Role                          | Responsibilities                     |
-|-----------------|---------------------|-------------------------------|--------------------------------------|
-| Alex Chen       | REG-2023-001        | Project Lead & Full-Stack Dev | Architecture, Backend, Deployment    |
-| Samira Patel    | REG-2023-002        | ML Engineer                   | Model Training, TFLite Optimization  |
-| Jordan Williams | REG-2023-003        | Mobile Developer              | UI/UX, Camera Implementation         |
-| Taylor Nguyen   | REG-2023-004        | QA & Data Specialist          | Testing, Dataset Management          |
-
-
-
-## Prerequisites
 - Node.js (v16+)
 - Expo CLI (`npm install -g expo-cli`)
 - Supabase account
 - Python environment (for model training)
+
 
 ## Setup Instructions
 
@@ -129,4 +106,4 @@ with open("model.tflite", "wb") as f:
 Pull requests are welcome! For major changes, please open an issue first.
 
 ## License
-MIT
+
