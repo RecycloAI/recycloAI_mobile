@@ -1,8 +1,8 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function TabLayout() {
+export default function MainTabLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -22,10 +22,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="classify"
+        name="map"
         options={{
-          title: 'Classify',
-          tabBarIcon: ({ color, size }) => <Ionicons name="camera-outline" size={size} color={color} />,
+          title: 'Map',
+          tabBarIcon: ({ color, size }) => <Ionicons name="map-outline" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
@@ -36,12 +36,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="profile"
         options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />,
+          title: 'Profile',
+          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="account-outline" size={size} color={color} />,
         }}
       />
     </Tabs>
   );
-}
+} 
