@@ -15,12 +15,12 @@ RecycloAI is a mobile application that uses computer vision to classify waste ma
 
 ## The Team
 
-| Name            | Registration Number | Role                          | Responsibilities                     |
-|-----------------|---------------------|-------------------------------|--------------------------------------|
-| Alex Chen       | REG-2023-001        | Project Lead & Full-Stack Dev | Architecture, Backend, Deployment    |
-| Samira Patel    | REG-2023-002        | ML Engineer                   | Model Training, TFLite Optimization  |
-| Jordan Williams | REG-2023-003        | Mobile Developer              | UI/UX, Camera Implementation         |
-| Taylor Nguyen   | REG-2023-004        | QA & Data Specialist          | Testing, Dataset Management          |
+| Name            |  Role                                    
+|-----------------|--------------------------------|
+| Josiah Ndirangu | Project Lead & AI/ML Engineer|  
+| Daniel Wekesa   | Frontend Developer           |                 
+| Geofrey Gitau   | Backend Developer            | 
+| Simon Waiganjo  | Full_Stack Engineer          | 
 
 
 
