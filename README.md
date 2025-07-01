@@ -1,34 +1,64 @@
 # recycloAI_mobile
 
-# RecycloAI - Waste Classification App 🚮♻️
+# RecycloAI - Smart Waste Classification & Bin Locator 🚮♻️🗺️
 
 ## Overview
-RecycloAI is a mobile application that uses computer vision to classify waste materials and provide recycling guidance. Built with React Native (Expo), Supabase, and TensorFlow Lite for on-device machine learning.
+
+**RecycloAI** is a mobile web application that uses AI to classify waste materials and helps users find the nearest appropriate disposal bins. The app combines computer vision for waste classification with location services and mapping to guide users to the correct recycling or waste bins in their area.
+
+---
+
+## How It Works
+
+1. User scans waste with phone (mobile web app).
+2. App classifies waste type (AI model or API).
+3. App gets user's current location (with permission).
+4. App queries Supabase for nearest bins for that waste type.
+5. App displays map and directions to the correct bin.
+
+---
 
 ## Features
-- 📸 Scan waste items using your phone's camera
-- 🤖 AI-powered waste classification
-- 📊 Track your recycling history
-- 🌱 Learn proper disposal methods
-- 🔐 User authentication
 
+- 📸 Camera-based waste scanning via mobile web interface  
+- 🤖 AI-powered waste classification  
+- 📍 Location-based bin discovery  
+- 🗺️ Interactive maps with turn-by-turn directions  
+- 🚮 Multiple waste type support (recyclables, organics, general waste, etc.)  
+- 📊 Track your recycling history and environmental impact  
+- 🌱 Learn proper disposal methods for different materials  
+- 🔐 User authentication and profile management  
+
+---
 
 ## The Team
 
-| Name            |  Role                                    
-|-----------------|--------------------------------|
-| Josiah Ndirangu | Project Lead & AI/ML Engineer|  
-| Daniel Wekesa   | Frontend Developer           |                 
-| Geofrey Gitau   | Backend Developer            | 
-| Simon Waiganjo  | Full_Stack Engineer          | 
+| Name            | Role                         |
+|-----------------|------------------------------|
+| Josiah Ndirangu | Project Lead & AI/ML Engineer|
+| Daniel Wekesa   | Frontend Developer           |
+| Geofrey Gitau   | Backend Developer            |
+| Simon Waiganjo  | Full Stack Engineer          |
 
-
+---
 
 ## Prerequisites
+
 - Node.js (v16+)
 - Expo CLI (`npm install -g expo-cli`)
 - Supabase account
 - Python environment (for model training)
+
+---
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/recycloai.git
+cd recycloai
+
 
 ## Setup Instructions
 
