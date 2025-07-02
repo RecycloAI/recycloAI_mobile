@@ -16,6 +16,7 @@ export default function ClassifyScreen() {
         <Image
           source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2922/2922510.png' }}
           style={styles.illustration}
+          resizeMode="contain"
         />
       </View>
       <View style={styles.bottomContainer}>
@@ -49,7 +50,6 @@ const styles = StyleSheet.create({
     width: 140,
     height: 140,
     marginTop: 32,
-    resizeMode: 'contain',
   },
   bottomContainer: {
     flex: 1,

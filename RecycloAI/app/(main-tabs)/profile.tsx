@@ -1,26 +1,49 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useAuth } from '../../components/AuthContext';
+
+const defaultProfile = {
+  name: '',
+  email: '',
+  avatar: '',
+};
 
 export default function ProfileScreen() {
   const router = useRouter();
-  const { signedIn, profile, signIn, signUp, setProfile } = useAuth();
+  const [signedIn, setSignedIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
+  const [profile, setProfile] = useState(defaultProfile);
   const [editMode, setEditMode] = useState(false);
   const [form, setForm] = useState({ email: '', password: '', name: '' });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSignUp = () => {
-    signUp(form.name, form.email, form.password);
-    setShowSignUp(false);
-    setForm({ email: '', password: '', name: '' });
+  // Placeholder for Supabase integration
+  const handleSignUp = async () => {
+    setLoading(true);
+    setError('');
+    // TODO: Replace with Supabase sign up
+    setTimeout(() => {
+      setProfile({ ...profile, name: form.name, email: form.email, avatar: '' });
+      setSignedIn(true);
+      setShowSignUp(false);
+      setForm({ email: '', password: '', name: '' });
+      setLoading(false);
+    }, 1000);
   };
-  const handleSignIn = () => {
-    signIn(form.email, form.password);
-    setShowSignIn(false);
-    setForm({ email: '', password: '', name: '' });
+  const handleSignIn = async () => {
+    setLoading(true);
+    setError('');
+    // TODO: Replace with Supabase sign in
+    setTimeout(() => {
+      setProfile({ ...profile, email: form.email });
+      setSignedIn(true);
+      setShowSignIn(false);
+      setForm({ email: '', password: '', name: '' });
+      setLoading(false);
+    }, 1000);
   };
 
   if (!signedIn) {
@@ -32,7 +55,20 @@ export default function ProfileScreen() {
             <Ionicons name="settings-outline" size={24} color="#fff" />
           </TouchableOpacity>
         </View>
-        {showSignUp ? (
+        <View style={styles.profileSection}>
+          <View style={styles.avatarPlaceholder} />
+          <Text style={styles.profileNameEmpty}>No profile</Text>
+          <Text style={styles.profileEmailEmpty}>Sign up or sign in to create your profile</Text>
+        </View>
+        <View style={styles.formBox}>
+          <TouchableOpacity style={styles.actionBtn} onPress={() => setShowSignUp(true)}>
+            <Text style={styles.actionBtnText}>Sign Up</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionBtn} onPress={() => setShowSignIn(true)}>
+            <Text style={styles.actionBtnText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
+        {showSignUp && (
           <View style={styles.formBox}>
             <Text style={styles.formTitle}>Sign Up</Text>
             <TextInput
@@ -58,14 +94,16 @@ export default function ProfileScreen() {
               onChangeText={password => setForm(f => ({ ...f, password }))}
               secureTextEntry
             />
-            <TouchableOpacity style={styles.actionBtn} onPress={handleSignUp}>
-              <Text style={styles.actionBtnText}>Sign Up</Text>
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+            <TouchableOpacity style={styles.actionBtn} onPress={handleSignUp} disabled={loading}>
+              {loading ? <ActivityIndicator color="#1a2e1a" /> : <Text style={styles.actionBtnText}>Sign Up</Text>}
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { setShowSignUp(false); setShowSignIn(true); }}>
               <Text style={styles.switchText}>Already have an account? Sign In</Text>
             </TouchableOpacity>
           </View>
-        ) : showSignIn ? (
+        )}
+        {showSignIn && (
           <View style={styles.formBox}>
             <Text style={styles.formTitle}>Sign In</Text>
             <TextInput
@@ -84,20 +122,12 @@ export default function ProfileScreen() {
               onChangeText={password => setForm(f => ({ ...f, password }))}
               secureTextEntry
             />
-            <TouchableOpacity style={styles.actionBtn} onPress={handleSignIn}>
-              <Text style={styles.actionBtnText}>Sign In</Text>
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+            <TouchableOpacity style={styles.actionBtn} onPress={handleSignIn} disabled={loading}>
+              {loading ? <ActivityIndicator color="#1a2e1a" /> : <Text style={styles.actionBtnText}>Sign In</Text>}
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { setShowSignIn(false); setShowSignUp(true); }}>
               <Text style={styles.switchText}>Don't have an account? Sign Up</Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <View style={styles.formBox}>
-            <TouchableOpacity style={styles.actionBtn} onPress={() => setShowSignUp(true)}>
-              <Text style={styles.actionBtnText}>Sign Up</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.actionBtn} onPress={() => setShowSignIn(true)}>
-              <Text style={styles.actionBtnText}>Sign In</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -275,5 +305,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 8,
     textAlign: 'center',
+  },
+  errorText: {
+    color: '#ff6b6b',
+    fontSize: 14,
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  profileNameEmpty: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 2,
+  },
+  profileEmailEmpty: {
+    color: '#bdbdbd',
+    fontSize: 14,
+    marginBottom: 8,
   },
 }); 

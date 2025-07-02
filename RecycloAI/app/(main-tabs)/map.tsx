@@ -1,48 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Platform, Linking } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function MapScreen() {
+  const router = useRouter();
+
   const handleGetStarted = () => {
-    if (Platform.OS === 'web') {
-      alert('Location settings can only be opened on a real device.');
-    } else {
-      Linking.openSettings();
-    }
+    router.push('/profile');
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.illustrationContainer}>
+      <Text style={styles.title}>Find the nearest{"\n"}recycling bin</Text>
+      <View style={styles.imageContainer}>
         <Image
-          source={{ uri: 'https://img.freepik.com/free-vector/realistic-earth-planet-illustration_52683-60331.jpg' }}
-          style={styles.illustration}
+          source={{ uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' }}
+          style={styles.mapImage}
+          resizeMode="cover"
         />
       </View>
-      <View style={styles.bottomContainer}>
-        <Text style={styles.title}>Help the planet effortlessly</Text>
-        <Text style={styles.description}>
-          Our app makes recycling simple, reducing landfill waste and promoting a greener future. Join us in making a difference, one item at a time.
-        </Text>
-        <View style={styles.statsRow}>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>100K+</Text>
-            <Text style={styles.statLabel}>Items Classified</Text>
-          </View>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>50K lbs</Text>
-            <Text style={styles.statLabel}>Waste Diverted</Text>
-          </View>
-        </View>
-        <View style={styles.statsRow}>
-          <View style={[styles.statCard, { flex: 1 }] }>
-            <Text style={styles.statValue}>10K+</Text>
-            <Text style={styles.statLabel}>Users Impacted</Text>
-          </View>
-        </View>
-        <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
-          <Text style={styles.buttonText}>Get Started</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
+        <Text style={styles.buttonText}>Get started</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -51,81 +30,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1a2e1a',
-    justifyContent: 'flex-start',
-  },
-  illustrationContainer: {
-    backgroundColor: '#f7ecd7',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 200,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
-  },
-  illustration: {
-    width: 120,
-    height: 120,
-    marginTop: 24,
-    resizeMode: 'contain',
-  },
-  bottomContainer: {
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: 24,
-    paddingTop: 24,
-    backgroundColor: '#1a2e1a',
+    paddingHorizontal: 16,
   },
   title: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
     textAlign: 'center',
+    marginBottom: 24,
+    marginTop: 12,
   },
-  description: {
-    color: '#bdbdbd',
-    fontSize: 15,
-    textAlign: 'center',
-    marginBottom: 22,
-  },
-  statsRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 10,
-    width: '100%',
-  },
-  statCard: {
-    backgroundColor: '#23331b',
+  imageContainer: {
+    backgroundColor: '#fff',
     borderRadius: 12,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    marginHorizontal: 6,
-    alignItems: 'center',
-    flex: 1,
-    minWidth: 110,
+    padding: 8,
+    marginBottom: 32,
   },
-  statValue: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 2,
-  },
-  statLabel: {
-    color: '#bdbdbd',
-    fontSize: 13,
-    textAlign: 'center',
+  mapImage: {
+    width: 180,
+    height: 120,
+    borderRadius: 8,
   },
   button: {
-    backgroundColor: '#6fcf97',
+    backgroundColor: '#4cd137',
     borderRadius: 22,
     paddingVertical: 14,
     paddingHorizontal: 32,
     alignItems: 'center',
-    marginTop: 24,
     width: '100%',
     maxWidth: 320,
+    marginTop: 24,
   },
   buttonText: {
-    color: '#1a2e1a',
+    color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
   },
